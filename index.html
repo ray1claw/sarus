@@ -28,23 +28,106 @@
         </ul>
       </header>
       <section>
-        <p>Sarus is a framework built on HTML5, AngularJS and (optionally) nodeJS in the backend.
-It provides unlimited scroll for your content while maintaining urls references in the browser, hence making sure there is no compromise on SEO. And ya, it just provides the frontend meaning you are free to use any stack to upload your content.</p>
+        <h1>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h1>
 
-<p>This project is under active development, though documentation is lacking miserably. However, code has been well commented in the master branch and should not cause pain to the developers.
-For the rest, it will be done before this month end.</p>
+<p>Sarus is a frontend framework based on AngularJS to display any number of posts without using a pager. It implements an infinite scroll but maintains url of the post in the browser's address bar. A continous mapping of urls allows search engines to count page hits accurately and also allow users to easily share posts.</p>
 
 <h1>
-<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a><a href="http://sarus.srijanlabs.com">DEMO</a>
-</h1>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
 
-<p>Please follow us on <a href="https://twitter.com/projectsarus">Twitter</a></p>
+<h2>
+<a name="fast" class="anchor" href="#fast"><span class="octicon octicon-link"></span></a>Fast</h2>
 
-<p>Developed by <a href="https://twitter.com/adityaraj">Aditya</a>,
-<a href="https://twitter.com/fotuzlab">Arijit</a> and 
-<a href="https://twitter.com/ray1claw">Ravish</a></p>
+<p>It loads data along scrolling. Hence speed to load nth post is equal to loading first post.</p>
 
-<p>Sponsored by <a href="http://srijan.net">Srijan Technologies</a></p>
+<h2>
+<a name="purely-frontend" class="anchor" href="#purely-frontend"><span class="octicon octicon-link"></span></a>Purely frontend</h2>
+
+<p>It is completely independent of the way data is stored in the backend. It uses API or RSS feeds to fetch the posts providing complete abstraction between frontend and backend. This also makes it compatible to use with apps that use mobile/CMS/propreitary solutions to store data.</p>
+
+<h2>
+<a name="easy-to-set-up" class="anchor" href="#easy-to-set-up"><span class="octicon octicon-link"></span></a>Easy to set up</h2>
+
+<p>It comes with enough inline documentation for anyone to start using. HTML partials are easy to maintain and indentify.</p>
+
+<h2>
+<a name="seo-friendly-infinite-scroll" class="anchor" href="#seo-friendly-infinite-scroll"><span class="octicon octicon-link"></span></a>SEO friendly infinite scroll</h2>
+
+<p>Along infinite scroll, it maintains url paths of posts in browser's address bar. This allows search engines to index your content regularly.</p>
+
+<h2>
+<a name="infinitely-customizable" class="anchor" href="#infinitely-customizable"><span class="octicon octicon-link"></span></a>Infinitely customizable</h2>
+
+<p>Being based on AngularJS, it allows any level of customization in design and functionality. It is as easy to customize as it is to set up.</p>
+
+<h2>
+<a name="responsive" class="anchor" href="#responsive"><span class="octicon octicon-link"></span></a>Responsive</h2>
+
+<p>The framework uses Zurb Foundation. It is responsive OOB.</p>
+
+<h2>
+<a name="maintains-browser-history" class="anchor" href="#maintains-browser-history"><span class="octicon octicon-link"></span></a>Maintains browser history</h2>
+
+<p>It maintains users' browser history using HTML5 History API. Bookmark and find your visited articles with ease. </p>
+
+<h2>
+<a name="sharethis" class="anchor" href="#sharethis"><span class="octicon octicon-link"></span></a>Sharethis</h2>
+
+<p>Sharethis comes bundled with it to allow easy sharing across social media.</p>
+
+<h1>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h1>
+
+<p>Minimum requirement is following tags in feed XML:</p>
+
+<p><code>&lt;title&gt;&lt;/title&gt;</code></p>
+
+<p><code>&lt;link&gt;&lt;/link&gt;</code></p>
+
+<p><code>&lt;description&gt;&lt;/description&gt;</code></p>
+
+<p>For an API call, following urls are required:</p>
+
+<blockquote>
+<p>/:count</p>
+
+<p>/offset/:slug/:count</p>
+
+<p>/slugs/:offset/:count</p>
+</blockquote>
+
+<p><em>These urls are defined in the RSS server script in the bundle. See below.</em></p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Data is fed into Sarus through API or RSS.</p>
+
+<h2>
+<a name="using-feeds" class="anchor" href="#using-feeds"><span class="octicon octicon-link"></span></a>Using Feeds</h2>
+
+<p>A NodeJS script to convert RSS feeds into required format comes in the bundle.</p>
+
+<ol>
+<li><p>Replace line 22 with feed url at server/RSS/app.js.</p></li>
+<li><p>Modify the endpoint to Node server's path on line 9 at js/controllers.js e.g. http://localhost:3000</p></li>
+</ol><h2>
+<a name="using-api" class="anchor" href="#using-api"><span class="octicon octicon-link"></span></a>Using API</h2>
+
+<p>Sarus can be used with custom API. This API should return content in JSON with minimum of following keys:</p>
+
+<blockquote>
+<p>title</p>
+
+<p>link</p>
+
+<p>description</p>
+</blockquote>
+
+<ol>
+<li>Modify the endpoint to the address of API calls on line 9 at js/controllers.js e.g. <a href="http://example.com">http://example.com</a>. Do not add trailing slash.</li>
+</ol>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/srijanlabs">srijanlabs</a></p>
