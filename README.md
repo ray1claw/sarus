@@ -1,32 +1,33 @@
-# Sarus
+# Sarus <sup><small>Beta</small></sup>
 
-### Check out the [Live Demo](http://sarus.srijanlabs.com)
+### Check out the [Live Demo](http://www.theweeklybyte.com)
 
-Sarus is a minimalistic front-end framework for when you need a SEO-friendly continuous scroll across a lot of content. Sarus implements a UX similar to [Quartz](http://qz.com/), and allows for bringing in new content seamlessly on scroll instead of tap/click. Couple that with context-based URL switching, and you got yourself a SEO winner! Sarus is perfect for your blog and any scenario where a continuous flow of content is needed.
+Sarus is a minimalistic front-end framework that lets media sites and blogs create an SEO-friendly continuous scroll of the content they have. Sarus implements a UX similar to [Quartz](http://qz.com/), and allows for bringing in new content seamlessly on scroll instead of tap/click. Couple that with context-based URL switching, and you got yourself a SEO winner! Sarus is perfect for your blog and any scenario where a continuous flow of content is needed.
 
-Made with love by [@adityaraj](https://twitter.com/adityaraj), [@fotuzlab](https://twitter.com/fotuzlab) and [@ray1claw](https://twitter.com/ray1claw)
+Made with love by [@ajsingh92](https://twitter.com/ajsingh92), [@adityaraj](https://twitter.com/adityaraj), [@fotuzlab](https://twitter.com/fotuzlab) and [@ray1claw](https://twitter.com/ray1claw)
 
 ## Features
 
 ### Fast
-Sarus loads data incrementally as you scroll, hence speed to load any post is equal to loading the first post.
+Sarus loads data incrementally as you scroll.
 ### Purely front-end
-Sarus is completely independent of the way data is stored in the back-end. It uses an API or RSS feeds to fetch the posts providing complete abstraction between front-end and back-end. This also makes it compatible with apps that use mobile-native/content management/proprietary solutions to store data.
+Sarus is completely independent of the way data is stored in the back-end. It uses an API or RSS feeds to fetch the posts, thus providing complete abstraction between front-end and back-end. This also makes it compatible with apps that use mobile-native/content management/proprietary solutions to store data.
 ### Easy to set up
 Sarus comes with extensive inline documentation to help you integrate it into your system with ease. HTML partials are easy to identify and maintain.
 ### SEO friendly infinite scroll
-Along infinite scroll, Sarus maintains URL paths of posts for the browser. This allows search engines to index your content without hiccups.
+Along with infinite scroll, Sarus maintains URL paths of posts for the browser. This allows search engines to index your content without hiccups.
 ### Infinitely customizable
 Being based on AngularJS, Sarus allows any level of customization in design and functionality. It is as easy to customize as it is to set up.
 ### Responsive
-Sarus uses the Sass version of Zurb Foundation, and comes responsive out of the box. You can easily either extend it or replace the whole styling component to make it look and feel like you want.
+Sarus uses Twitter Bootstrap, and is responsive out of the box. You can easily either extend it or replace the entire styling component to make it look just the way you want.
 ### Maintains browser history
-It maintains users' browser history using HTML5 History API. Bookmark and find your visited articles with ease. 
+Sarus maintains the browser history of bowsers using HTML5 History API.This lets user bookmark and find visited articles very easily.
 ### Sharethis
-Sharethis comes bundled with it to allow easy sharing across social media.
-
+Sharethis comes bundled with Sarus to allow easy sharing across social media.
+####Disqus
+Sarus uses Disqus for discussions on the articles, enabling users to put their views as well as read those of others.
 ## Requirements
-Minimum requirement is following tags in feed XML:
+The minimum requirement is to use the following tags in the feed XML:
 
 `<title></title>`
 
@@ -34,40 +35,61 @@ Minimum requirement is following tags in feed XML:
 
 `<description></description>`
 
-For an API call, following urls are required:
+For an API call, the following URLs are required:
 
-> /:count
+> /api/article/1
 
-> /offset/:slug/:count
+> /api/slugs/:offset/:count
 
-> /slugs/:offset/:count
+_These URLs are defined in the RSS server script in the bundle. See below._
 
-_These urls are defined in the RSS server script in the bundle. See below._
+## Technology Stack
 
-## Installation
-Sarus uses the data that you expose it via an API or RSS feed.
+<big>Express</big> - We use Express framework over Node.js for our backend application with EJS templating engine.
 
-#### Using Feeds
-A NodeJS script to convert RSS feeds into required format comes in the bundle.
+<big>MongoDB</big> - For the database, our choice is MongoDB, which is simple and stable for the feeds.
 
-1. Replace line 22 with feed url at server/RSS/app.js.
+<big>Angular.js</big> - Sarus takes advantage of Angular.js JavaScript MV* framework to provide a great UX to the users.
 
-2. Modify the endpoint to Node server's path on line 9 at js/controllers.js e.g. http://localhost:3000
+## Installation & configurations
+Clone the repository to your local machine, open up terminal, reach out into the Sarus repo and run
+the following command.
 
-#### Using API
-Sarus can be used with custom API. This API should return content in JSON with minimum of following keys:
+>npm install
 
-> title
+This will install all the dependencies requird for Sarus to run.
+[In case of an error, it could be because you don't have Node Package Manager installed on your machine or you need to run with superuser as sudo npm install]
 
-> link
+After the installation of dependencies, you can directly run the server as
 
-> description
+>npm start
 
-1. Modify the endpoint to the address of API calls on line 9 at js/controllers.js e.g. http://example.com. Do not add trailing slash.
+Open up browser with
 
-### Follow us on [Twitter](https://twitter.com/projectsarus) for updates
+>http://localhost:26192
 
-Developed by
+And you'll find Sarus there.
+
+###For Configuration
+
+Sarus will run with its default setup. But you can configure it by opening up the configuration file located in lib/config/config.js
+
+By using the config file you can tell Sarus to where to fetch the feeds, on which port it should be listening, and the name of the MongoDB database to use.
+
+##Screenshot
+
+![Animated png](screenshots/sarus-1.png "Animation that shows auto completion")
+
+##Todo
+
+ <ul>
+ <li><del> Code Quality By [JSHint](https://github.com/jshint/jshint/).</del> </li>
+ <li >[Gulp](https://github.com/gulpjs/gulp/) build Automations. </li>
+ <li> Code review based on [John Papa's Angular Style Guide](https://github.com/johnpapa/angularjs-styleguide/blob/master/README.md).</li></ul>
+
+
+####Developed by
+[@ajsingh92](https://twitter.com/ajsingh92)
 [@adityaraj](https://twitter.com/adityaraj)
 [@fotuzlab](https://twitter.com/fotuzlab)
 [@ray1claw](https://twitter.com/ray1claw)
